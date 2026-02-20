@@ -5,26 +5,25 @@ import java.math.BigDecimal;
 
 public class Main{
     public static void main(String[] args) {
-        BigDecimal num1 = new BigDecimal("2.3");
-        BigDecimal num2 = new BigDecimal("1.5");
-        BigDecimal sum = num1.add(num2);
-        BigDecimal subtract = num1.subtract(num2);
-        BigDecimal multiply = num1.multiply(num2);
-        BigDecimal divide = num1.divide(num2, 2, RoundingMode.HALF_UP);
-        System.out.println(sum + " " + subtract + " " + multiply + " " +  divide);
-        BigDecimal x = new BigDecimal("2.3");
-        BigDecimal result = calculate(x);
-        System.out.println(result);
+        BigDecimal number1 = new BigDecimal("1.2345");
+        double result1 = roundedToHundredth(number1);
+        System.out.println(result1);
+
+        BigDecimal result2 = reverseAndRound(number1);
+        System.out.println(result2);
+
+    }
+    public static double roundedToHundredth(BigDecimal number){
+        if (number == null) {
+            return 0.0;
+        }
+        return number.setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
-    public static BigDecimal calculate(BigDecimal x){
-        BigDecimal num1 = new BigDecimal("2.3");
-        BigDecimal num2 = new BigDecimal("1.5");
-        BigDecimal num3 = new BigDecimal("0.8");
-        BigDecimal all = num1.multiply(x);
-        all = all.add(num2);
-        BigDecimal denominator = x.subtract(num3);
-        all=all.divide(denominator, 2 , RoundingMode.HALF_UP);
-        return all;
+    public static BigDecimal reverseAndRound (BigDecimal number){
+        if (number == null) {
+            return null;
+        }
+        return number.negate().setScale(1, RoundingMode.HALF_UP);
     }
 }
