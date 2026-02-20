@@ -19,6 +19,7 @@ public class IntArrayList implements IntList{
             }
             newArray[array.length+1] = number;
             setArray(newArray);
+            size++;
         }
         array[size] = number;
         size++;
